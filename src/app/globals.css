@@ -1,0 +1,110 @@
+@import "tailwindcss";
+
+:root {
+  --amazon-dark: #131921;
+  --amazon-navy: #232f3e;
+  --amazon-gold: #febd69;
+  --amazon-orange: #f3a847;
+  --amazon-orange-btn: #ff9900;
+  --amazon-link: #007185;
+  --amazon-star: #f3a847;
+  --amazon-green: #007600;
+  --amazon-red: #b12704;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  font-family: 'Amazon Ember', Arial, sans-serif;
+  background-color: #eaeded;
+  color: #0f1111;
+  margin: 0;
+  padding: 0;
+}
+
+/* Amazon-style search */
+.amazon-search-btn {
+  background-color: var(--amazon-gold);
+  border-radius: 0 4px 4px 0;
+}
+.amazon-search-btn:hover {
+  background-color: var(--amazon-orange);
+}
+
+/* Amazon-style buttons */
+.btn-amazon {
+  background: linear-gradient(to bottom, #f7dfa5, #f0c14b);
+  border: 1px solid #a88734;
+  border-radius: 3px;
+  color: #111;
+  cursor: pointer;
+  font-size: 13px;
+  text-align: center;
+  padding: 8px 10px;
+}
+.btn-amazon:hover {
+  background: linear-gradient(to bottom, #f5d78e, #eeb933);
+}
+
+.btn-amazon-primary {
+  background: linear-gradient(to bottom, #f0c14b, #e6a917);
+  border: 1px solid #a88734;
+  border-radius: 3px;
+  color: #111;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 10px 15px;
+  width: 100%;
+  text-align: center;
+}
+.btn-amazon-primary:hover {
+  background: linear-gradient(to bottom, #e9b84a, #d99a12);
+}
+
+/* Star rating */
+.star-rating {
+  color: var(--amazon-star);
+}
+
+/* Product card */
+.product-card {
+  background-color: #fff;
+  border: 1px solid #dddbdb;
+  border-radius: 4px;
+  transition: box-shadow 0.2s ease;
+}
+.product-card:hover {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+/* Amazon section box */
+.amazon-section {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 14px 18px;
+}
+
+/* Prime badge */
+.prime-badge {
+  color: #00a8e0;
+  font-weight: 700;
+  font-size: 12px;
+}
+
+/* Link style */
+.amazon-link {
+  color: var(--amazon-link);
+  text-decoration: none;
+}
+.amazon-link:hover {
+  color: #c45500;
+  text-decoration: underline;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: #f1f1f1; }
+::-webkit-scrollbar-thumb { background: #aaa; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #888; }
