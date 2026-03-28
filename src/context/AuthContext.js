@@ -1,0 +1,88 @@
+"use client"
+import { createContext, useContext, useEffect, useState } from 'react';
+import axios from 'axios';
+
+const AuthContext = createContext();
+const API_URL = 'http://localhost:5000/api/v1';
+
+export const AuthProvider = ({ children }) => {
+  const [user, setUser] = useState(null);
+  const [token, setToken] = useState(null);
+  const [isReady, setIsReady] = useState(false);
+
+  useEffect(() => {
+    const initAuth = async () => {
+      const savedToken = localStorage.getItem('auth_token');
+      const savedUser = localStorage.getItem('auth_user');
+      
+      if (savedToken && savedUser) {
+        setToken(savedToken);
+        setUser(JSON.parse(savedUser));
+        setIsReady(true);
+      } else {
+        // Auto-login default user "Ujjwal Sharma" as per requirements
+        try {
+          const res = await axios.post(`${API_URL}/users/login`, { email: 'ujjwal@example.com', password: 'password123' });
+          localStorage.setItem('auth_token', res.data.token);
+          localStorage.setItem('auth_user', JSON.stringify(res.data.user));
+          setToken(res.data.token);
+          setUser(res.data.user);
+        } catch (err) {
+          try {
+            const res2 = await axios.post(`${API_URL}/users/register`, { 
+              email: 'ujjwal@example.com', password: 'password123', first_name: 'Ujjwal', last_name: 'Sharma' 
+            });
+            localStorage.setItem('auth_token', res2.data.token);
+            localStorage.setItem('auth_user', JSON.stringify(res2.data.user));
+            setToken(res2.data.token);
+            setUser(res2.data.user);
+          } catch(e) {}
+        }
+        setIsReady(true);
+      }
+    };
+    initAuth();
+  }, []);
+
+  const login = async (email, password) => {
+    const res = await axios.post(`${API_URL}/users/login`, { email, password });
+    const { token: newToken, user: userData } = res.data;
+    
+    localStorage.setItem('auth_token', newToken);
+    localStorage.setItem('auth_user', JSON.stringify(userData));
+    setToken(newToken);
+    setUser(userData);
+    return res.data;
+  };
+
+  const register = async (email, password, first_name, last_name) => {
+    const res = await axios.post(`${API_URL}/users/register`, { email, password, first_name, last_name });
+    const { token: newToken, user: userData } = res.data;
+    
+    localStorage.setItem('auth_token', newToken);
+    localStorage.setItem('auth_user', JSON.stringify(userData));
+    setToken(newToken);
+    setUser(userData);
+    return res.data;
+  };
+
+  const logout = () => {
+    localStorage.removeItem('auth_token');
+    localStorage.removeItem('auth_user');
+    setToken(null);
+    setUser(null);
+    window.location.reload();
+  };
+
+  const openAuthModal = () => {
+    window.dispatchEvent(new Event('auth:open'));
+  };
+
+  return (
+    <AuthContext.Provider value={{ user, token, isReady, login, register, logout, openAuthModal }}>
+      {children}
+    </AuthContext.Provider>
+  );
+};
+
+export const useAuth = () => useContext(AuthContext);
