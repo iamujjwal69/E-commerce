@@ -4,7 +4,7 @@ import axios from 'axios';
 import { useAuth } from './AuthContext';
 
 const WishlistContext = createContext();
-const API_URL = 'http://localhost:5000/api/v1';
+const API_URL = process.env.NEXT_PUBLIC_API_URL || 'https://e-commerce-backend-production-ebd6.up.railway.app/api/v1';
 
 export const WishlistProvider = ({ children }) => {
   const { token, openAuthModal } = useAuth();

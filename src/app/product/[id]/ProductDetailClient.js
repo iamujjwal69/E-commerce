@@ -6,7 +6,7 @@ import { ChevronRight, Heart } from 'lucide-react';
 import StarRating from '@/components/StarRating';
 import { useRouter } from 'next/navigation';
 
-const API_URL = 'http://localhost:5000/api/v1';
+const API_URL = process.env.NEXT_PUBLIC_API_URL || 'https://e-commerce-backend-production-ebd6.up.railway.app/api/v1';
 
 export default function ProductDetailClient({ id }) {
   const [product, setProduct] = useState(null);

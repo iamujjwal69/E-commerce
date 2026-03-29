@@ -5,7 +5,7 @@ import axios from 'axios';
 import ProductCard from '@/components/ProductCard';
 import { Loader2 } from 'lucide-react';
 
-const API_URL = 'http://localhost:5000/api/v1';
+const API_URL = process.env.NEXT_PUBLIC_API_URL || 'https://e-commerce-backend-production-ebd6.up.railway.app/api/v1';
 
 const CATEGORIES = ['Electronics', 'Clothing & Fashion', 'Books', 'Home & Kitchen'];
 const DEALS = [
