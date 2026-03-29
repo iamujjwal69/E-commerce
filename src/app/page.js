@@ -117,9 +117,10 @@ function HomeContent() {
             <Loader2 className="w-8 h-8 animate-spin" style={{ color: '#f3a847' }} />
           </div>
         ) : products.length === 0 ? (
-          <div className="text-center py-20">
-            <p className="text-gray-500 text-lg">No products found.</p>
-            <a href="/" className="amazon-link text-sm mt-2 inline-block">← Back to all products</a>
+          <div className="bg-white border border-gray-200 rounded p-12 text-center shadow-sm">
+            <p className="text-gray-900 text-xl font-medium mb-2">No products found.</p>
+            <p className="text-gray-500 text-sm mb-6">Try searching for something else or browse another category.</p>
+            <a href="/" className="btn-amazon px-8 py-2 inline-block rounded-full">Explore all products</a>
           </div>
         ) : (
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3">

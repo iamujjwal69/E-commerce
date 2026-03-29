@@ -68,17 +68,30 @@ export default function Orders() {
                   </span>
                   <span className="text-sm text-gray-600">Arriving in 2–5 business days</span>
                 </div>
-                <div className="space-y-3">
-                  {(order.items || []).map(item => (
-                    <div key={item.id} className="flex gap-3 items-start">
-                      <div className="w-16 h-16 border border-gray-100 rounded shrink-0">
-                        <img src={item.Product?.main_image_url || 'https://via.placeholder.com/60'} alt={item.Product?.name} className="w-full h-full object-contain p-1" />
+                <div className="space-y-4">
+                  {(order.items || order.OrderItems || []).map(item => (
+                    <div key={item.id} className="flex gap-4 items-start pb-4 border-b border-gray-100 last:border-0 last:pb-0">
+                      <div className="w-20 h-20 border border-gray-100 rounded shrink-0 bg-white">
+                        <img 
+                          src={item.Product?.main_image_url || 'https://via.placeholder.com/60'} 
+                          alt={item.Product?.name} 
+                          className="w-full h-full object-contain p-1" 
+                        />
                       </div>
-                      <div>
-                        <a href={`/product/${item.product_id}`} className="text-sm amazon-link font-medium line-clamp-2">
-                          {item.Product?.name}
+                      <div className="flex-1">
+                        <a href={`/product/${item.product_id}`} className="text-sm font-medium text-[#007185] hover:text-[#c45500] hover:underline line-clamp-2">
+                          {item.Product?.name || 'Product Details Unavailable'}
                         </a>
-                        <p className="text-xs text-gray-500 mt-0.5">Qty: {item.quantity} × ₹{Number(item.price).toLocaleString('en-IN')}</p>
+                        <p className="text-xs text-gray-500 mt-1">
+                          Quantity: <span className="font-bold text-gray-700">{item.quantity}</span>
+                        </p>
+                        <p className="text-sm font-bold text-gray-900 mt-1">
+                          ₹{Number(item.price_at_time || item.Product?.price || 0).toLocaleString('en-IN')}
+                        </p>
+                        <div className="mt-3 flex gap-2">
+                          <button className="btn-amazon text-xs py-1 px-3">Buy it again</button>
+                          <button className="btn-amazon text-xs py-1 px-3">View your item</button>
+                        </div>
                       </div>
                     </div>
                   ))}
