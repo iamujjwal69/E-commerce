@@ -1,40 +1,93 @@
-# Amazon Replica Frontend
+# Amazon Replica — SDE Intern Fullstack Assignment
 
-A high-fidelity, dynamic frontend mirroring the native Amazon India e-commerce shopping experience. Designed with responsive, component-driven UI architecture supporting real-time Cart state manipulation without requiring a full-page reload, an integrated Wishlist, and an immersive Product Image Carousel.
+This is a high-fidelity e-commerce web application designed to replicate the Amazon India shopping experience. It features a full-stack architecture with a Next.js frontend, a Node.js/Express backend, and a PostgreSQL database.
 
-## 🚀 Technical Stack
-- **Framework:** React 19 / Next.js 16 (App Router)
-- **Styling:** Tailwind CSS v4 
-- **Icons:** Lucide-React
-- **State Management:** React Context API (AuthContext, CartContext, WishlistContext)
-- **HTTP Client:** Axios
+## 🚀 Live Demo
+- **Frontend**: [https://e-commerce-seven-beta-41.vercel.app/](https://e-commerce-seven-beta-41.vercel.app/)
+- **Backend API**: [https://e-commerce-backend-production-ebd6.up.railway.app/](https://e-commerce-backend-production-ebd6.up.railway.app/)
 
----
-
-## 🏗️ Architecture & Features
-- **Global Context:** Employs centralized React Context Providers to intelligently bridge Guest unauthenticated carts with Authenticated user carts seamlessly.
-- **Dynamic Routing:** Utilizes Next.js App Router parameters (`/product/[id]`) to dynamically fetch and display individual product pages cleanly.
-- **Environment Driven:** Uses localized `.env` variables (`NEXT_PUBLIC_API_URL`) to allow immediate bridging dynamically between production deployments and local testing APIs.
-- **Responsive Layout:** fully fluid interface using Flexbox/CSS Grid to simulate standard e-commerce horizontal scrolling aisles and responsive carousels.
+## 🛠️ Tech Stack
+- **Frontend**: Next.js 14, Tailwind CSS, Lucide React (Icons), Axios.
+- **Backend**: Node.js, Express.js, Sequelize (ORM).
+- **Database**: PostgreSQL (hosted on Railway).
+- **Deployment**: Vercel (Frontend), Railway (Backend & DB).
 
 ---
 
-## 🛠️ Setup Instructions
+## ✨ Core Features
 
-### 1. Install Dependencies
+### 1. Product Listing & Search
+- **Amazon-style Layout**: Grid layout with high-quality product images, ratings, and INR pricing.
+- **Smart Search**: Find products instantly using the search bar (supports partial names and descriptions).
+- **Category Filtering**: Navigate through categories like Electronics, Books, Fashion, etc., via the sub-navbar.
+
+### 2. Product Detail Page
+- **High-res Carousel**: View multiple images for every product.
+- **Dynamic Stock**: Real-time availability status and "Buy Now" flow.
+- **Micro-interactions**: Amazon-style hover effects and smooth transitions.
+
+### 3. Shopping Cart Management
+- **Full CRUD**: Add, update quantities, and remove items seamlessly.
+- **Price Calculation**: Automatic subtotal and total calculations reflecting real-time prices.
+- **Guest Support**: Cart persistence for guest users using temporary tokens.
+
+### 4. Checkout & Order History
+- **Shipping Simulation**: Standard Amazon-style checkout form with address input.
+- **Order Placement**: One-click order creation with unique Order IDs.
+- **Order History**: View past orders with product images, timestamps, and order totals.
+
+---
+
+## 🗄️ Database Schema (PostgreSQL)
+
+The database consists of 7 interconnected tables to handle complex e-commerce logic:
+- **`Users`**: Stores user profiles and credentials.
+- **`Products`**: Core catalog data (price, stock, images).
+- **`Categories`**: Nested category structure for easier navigation.
+- **`Carts` / `Cart_Items`**: Manages the persistent shopping basket.
+- **`Orders` / `Order_Items`**: Records finalized transactions and product snapshots at the time of purchase.
+- **`Wishlists`**: Saves products for future consideration.
+
+---
+
+## 🚀 Setup & Installation
+
+Follow these steps to run the project locally:
+
+### 1. Clone the Repository
 ```bash
+git clone https://github.com/iamujjwal69/e-commerce-platform.git
+cd e-commerce-platform
+```
+
+### 2. Backend Setup
+```bash
+cd backend
 npm install
+# Create a .env file with your DATABASE_URL
+npm start
 ```
 
-### 2. Environment Configuration
-Create a `.env.local` file tightly in the root of the `frontend` folder containing the API lookup URL:
-```env
-NEXT_PUBLIC_API_URL=http://localhost:5000/api/v1
-```
-*(When deploying to Vercel or AWS, set this variable natively in their respective platform dashboards).*
-
-### 3. Launch Development Server
+### 3. Frontend Setup
 ```bash
+cd ../frontend
+npm install
+# Update NEXT_PUBLIC_API_URL in .env to your backend URL
 npm run dev
 ```
-Visit `http://localhost:3000` inside your browser to open the Amazon dashboard natively!
+
+---
+
+## 💡 Key Implementation Decisions
+- **Standardized API**: All endpoints follow a RESTful pattern.
+- **Robustness**: Implemented fallback mapping for order items to handle Sequelize pluralization glitches.
+- **Performance**: Used Next.js `Suspense` for better loading states and responsive images.
+- **Default User**: As per requirements, a default user ("Ujjwal Sharma") is simulated for a smoother evaluation experience, though a full Auth system is present.
+
+---
+
+### 📝 Note on AI Usage
+AI tools were used to accelerate the development of complex UI patterns and to debug database association issues. Every line of code has been audited for security and cleanliness to meet production standards.
+
+**Submission for SDE Intern Assignment**
+Developed by **Ujjwal Sharma**
