@@ -18,28 +18,8 @@ export const AuthProvider = ({ children }) => {
       if (savedToken && savedUser) {
         setToken(savedToken);
         setUser(JSON.parse(savedUser));
-        setIsReady(true);
-      } else {
-        // Auto-login default user "Ujjwal Sharma" as per requirements
-        try {
-          const res = await axios.post(`${API_URL}/users/login`, { email: 'ujjwal@example.com', password: 'password123' });
-          localStorage.setItem('auth_token', res.data.token);
-          localStorage.setItem('auth_user', JSON.stringify(res.data.user));
-          setToken(res.data.token);
-          setUser(res.data.user);
-        } catch (err) {
-          try {
-            const res2 = await axios.post(`${API_URL}/users/register`, { 
-              email: 'ujjwal@example.com', password: 'password123', first_name: 'Ujjwal', last_name: 'Sharma' 
-            });
-            localStorage.setItem('auth_token', res2.data.token);
-            localStorage.setItem('auth_user', JSON.stringify(res2.data.user));
-            setToken(res2.data.token);
-            setUser(res2.data.user);
-          } catch(e) {}
-        }
-        setIsReady(true);
       }
+      setIsReady(true);
     };
     initAuth();
   }, []);

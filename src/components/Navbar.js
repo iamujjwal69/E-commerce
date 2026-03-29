@@ -65,7 +65,7 @@ export default function Navbar() {
           />
           <button
             type="submit"
-            className="amazon-search-btn px-4 py-2 rounded-r-md flex items-center"
+            className="amazon-search-btn px-4 h-full rounded-r-md flex items-center justify-center transition-colors"
           >
             <Search className="w-5 h-5 text-gray-800" />
           </button>
@@ -73,10 +73,10 @@ export default function Navbar() {
 
         {/* Account */}
         <div className="hidden md:flex relative group border-2 border-transparent hover:border-white rounded px-2 py-1 cursor-pointer shrink-0">
-          <div onClick={() => !user && openAuthModal()} className="flex flex-col">
-            <span className="text-gray-300 text-xs">Hello, {user ? user.first_name : 'sign in'}</span>
-            <div className="flex items-center gap-1">
-              <span className="text-white font-bold text-sm">Account & Lists</span>
+          <div onClick={() => !user && openAuthModal()} className="flex flex-col h-full justify-center">
+            <span className="text-gray-300 text-xs leading-none">Hello, {user ? user.first_name : 'sign in'}</span>
+            <div className="flex items-center gap-1 mt-0.5">
+              <span className="text-white font-bold text-sm leading-none whitespace-nowrap">Account & Lists</span>
               <ChevronDown className="w-3 h-3 text-white" />
             </div>
           </div>

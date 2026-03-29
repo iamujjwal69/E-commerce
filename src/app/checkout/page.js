@@ -88,7 +88,7 @@ export default function Checkout() {
               required
               className="w-full border border-gray-300 rounded p-3 text-sm focus:outline-none focus:ring-2 focus:ring-yellow-400"
             />
-            <p className="text-xs text-gray-500 mt-1">Delivering to: <span className="font-medium text-gray-700">{user ? `${user.first_name} ${user.last_name}` : 'Ujjwal Sharma'}</span></p>
+            <p className="text-xs text-gray-500 mt-1">Delivering to: <span className="font-medium text-gray-700">{user ? `${user.first_name} ${user.last_name}` : 'Guest User (Sign in to add address)'}</span></p>
           </div>
 
           {/* Payment */}

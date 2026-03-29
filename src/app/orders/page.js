@@ -52,7 +52,7 @@ export default function Orders() {
                 </div>
                 <div>
                   <p className="text-gray-500 text-xs uppercase tracking-wide">Ship to</p>
-                  <p className="font-medium amazon-link cursor-pointer line-clamp-1">{user ? `${user.first_name} ${user.last_name}` : 'Ujjwal Sharma'}</p>
+                  <p className="font-medium amazon-link cursor-pointer line-clamp-1">{user ? `${user.first_name} ${user.last_name}` : 'Registered User'}</p>
                 </div>
                 <div className="text-right">
                   <p className="text-gray-500 text-xs uppercase tracking-wide">Order #</p>
