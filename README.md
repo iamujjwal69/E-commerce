@@ -6,6 +6,10 @@ This is a high-fidelity e-commerce web application designed to replicate the Ama
 - **Frontend**: [https://e-commerce-seven-beta-41.vercel.app/](https://e-commerce-seven-beta-41.vercel.app/)
 - **Backend API**: [https://e-commerce-backend-production-ebd6.up.railway.app/](https://e-commerce-backend-production-ebd6.up.railway.app/)
 
+ ## For Using all features like wishlistyou have to login :
+ - **Passwoord**: username: ujjwal@example.com
+                  password : password123
+
 ## 🛠️ Tech Stack
 - **Frontend**: Next.js 14, Tailwind CSS, Lucide React (Icons), Axios.
 - **Backend**: Node.js, Express.js, Sequelize (ORM).
